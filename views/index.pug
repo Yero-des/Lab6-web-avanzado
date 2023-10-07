@@ -1,5 +1,5 @@
 include mixins
-doctype
+doctype html
 html(lang="es")
   head
     title Plantilla Bootstrap con Jade
@@ -7,42 +7,84 @@ html(lang="es")
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(name='description' content='Baking Bootstrap Snippets with Jade')
-    link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css" rel="stylesheet")
+    +bootswatch("superhero")
 
   body(style="padding-bottom:10rem;")
     .container
-      nav.navbar.navbar-default
-        .container-fluid
-          .navbar-header
-            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.navbar-brand(href='#') Project name
-          #myNavbar.collapse.navbar-collapse
-            ul.nav.navbar-nav
-              li.active
-                a(href='#') Home
-              li
-                a(href='#') About
-              li
-                a(href='#') Contact
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role="button",aria-expanded="false") Dropdown
-                  span.caret
-                ul.dropdown-menu(role="menu")
-                  li
-                    a(href='#') Action
-                  li
-                    a(href='#') Another action
-                  li
-                    a(href='#') Something else here
-                  li.divider
-                  li.dropdown-header Nav header  
-                  li
-                    a(href='#') Separated link
-                  li
-                    a(href='#') One more separated link
-                 
+      +nav("Project name", "dropdown_menu", "inverse")
+        ul.nav.navbar-nav
+          +nav_item("#", "Home", true)
+          +nav_item("#", "About")
+          +nav_item("#", "Contact")
+          +nav_item_dropdown("Dropdown")
+            +nav_item("#", "Action")
+            +nav_item("#", "Another action")
+            +nav_item("#", "Something else here")
+            +nav_divider()
+            +nav_header("Nav header")
+            +nav_item("#", "Separated link")
+            +nav_item("#", "One more separated link")
+
+      .btn-group
+        a.btn.btn-default(href='#') Default
+        a.btn.btn-primary(href='link.htm') Primary
+        a.btn.btn-success(href='success.html') Success
+        a.btn.btn-info(href='info.html') Info
+        a.btn.btn-warning(href='warning.html') Warning
+        a.btn.btn-danger(href='#') Danger
+
+      .row
+        .col-md-4.col-sm-6.col-xs-12
+          +panel("Panel Heading")
+            p This is an example panel.
+        .col-md-4.col-sm-6.col-xs-12
+          +panel("Panel Heading", "panel-success")
+            p Panel in success.
+        .col-md-4.col-sm-6.col-xs-12
+          +panel("Panel Heading", "panel-danger")
+            p Panel in danger.
+
+      +alert("warning", "Warning!")
+      +alert("danger", "Will Robinson!")
+      +alert("success", "You Succeeded :-)")
+      +alert("info", "Some information for you")
+
+      .jumbotron
+        h1 Hello, world!
+        p This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+        p
+          +button("primary", "more.html", "btn-lg")
+            | Learn more
+
+      +listGroup("list")
+        +listItem("active") Cras justo odio
+        +listItem Dapibus ac facilisis in
+        +listItem Morbi leo risus
+        +listItem Dapibus ac facilisis in
+        +listItem Morbi leo risus
+        +listItem Dapibus ac facilisis in
+
+      +listGroup("links")
+        +listItem("link1.html", "active")
+          +listHeading List group item heading
+          +listText Donec id elit non mi porta gravida at eget metus.
+        +listItem("link2.html")
+          +listHeading List group item heading
+          +listText Donec id elit non mi porta gravida at eget metus.
+        +listItem("link3.html")
+          +listHeading List group item heading
+          +listText Donec id elit non mi porta gravida at eget metus.
+
+      +listGroup
+        +listItem
+          +listHeading List group item heading
+          +listText Donec id elit non mi porta gravida at eget metus.
+        +listItem
+          +listHeading List group item heading
+          +listText Donec id elit non mi porta gravida at eget metus.
+        +listItem
+          +listHeading List group item heading
+          +listText Donec id elit non mi porta gravida at eget metus.
+
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
